@@ -21,7 +21,10 @@
     "fake-useragent": "^1.0.1",
     "file-type": "^19.3.0",
     "formdata-node": "^6.0.3",
+    "lodash": "^4.17.21",
     "node-fetch": "^3.3.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pg": "^8.12.0",
+    "sequelize": "^6.37.3"
   }
 }

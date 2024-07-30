@@ -16,6 +16,8 @@ import shorten from './routes/shorturl.js';
 import screenshot from './routes/ssweb.js';
 import ipsearch from './routes/ipsearch.js';
 import ytdll from './routes/ytdl.js';
+import quote from './routes/quotemaker.js';
+import ai from './routes/ai.js'
 
 const app = express();
 
@@ -42,6 +44,8 @@ app.use('/shorturl', shorten);
 app.use('/ssweb', screenshot);
 app.use('/ipsearch', ipsearch);
 app.use('/ytdl', ytdll);
+app.use('/qc', quote);
+app.use('/ai', ai);
 
 
 app.listen(3000, () => {
