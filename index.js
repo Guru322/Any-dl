@@ -10,6 +10,9 @@ import apksearch from './routes/apk-mirror.js';
 import xnsearch from './routes/xnxx-search.js';
 import xnxxdl from './routes/xnxxdl.js';
 import platstor from './routes/playstore.js';
+import hanime from './routes/hanime.js';
+import removbg from './routes/removebg.js';
+import shorten from './routes/shorturl.js';
 
 const app = express();
 
@@ -30,6 +33,9 @@ app.use('/apksearch', apksearch);
 app.use('/xnxxsearch', xnsearch);
 app.use('/xnxxdl', xnxxdl);
 app.use('/playstore', platstor);
+app.use('/hanime', hanime);
+app.use('/removebg', removbg);
+app.use('/shorturl', shorten);
 
 
 app.listen(3000, () => {
