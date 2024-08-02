@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import spotifySearch from './routes/spotifysearch.js';
 import spotifyDl from './routes/spotifydl.js';
 import Igs from './routes/ig-story.js';
@@ -19,10 +21,16 @@ import ytdll from './routes/ytdl.js';
 import quote from './routes/quotemaker.js';
 import ai from './routes/ai.js'
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.get('/', (req, res) => {
     const visitorIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.ip;
@@ -32,6 +40,10 @@ app.get('/', (req, res) => {
         msg: "Server is running", 
         yourip: visitorIp 
     });
+});
+
+app.get('/docs', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 
