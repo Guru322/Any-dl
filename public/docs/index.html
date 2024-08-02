@@ -31,21 +31,233 @@
         a:hover {
             text-decoration: underline;
         }
+        details {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
     <h1>API Endpoints</h1>
     <ul>
-        <li><a href="/spotifysearch">/spotifysearch</a></li>
-        <li><a href="/spotifydl">/spotifydl</a></li>
-        <li><a href="/igs">/igs</a></li>
-        <li><a href="/igdl">/igdl</a></li>
-        <li><a href="/xdown">/xdown</a></li>
-        <li><a href="/fbvideo">/fbvideo</a></li>
-        <li><a href="/apksearch">/apksearch</a></li>
-        <li><a href="/xnxxsearch">/xnxxsearch</a></li>
-        <li><a href="/xnxxdl">/xnxxdl</a></li>
-        <li><a href="/playstore">/playstore</a></li>
+        <li>
+            <a href="/spotifysearch">spotifysearch</a>
+            <details>
+                <summary>Details</summary>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>query</td>
+                        <td>string</td>
+                        <td>The search term for Spotify.</td>
+                    </tr>
+                </table>
+                <p><strong>Request Type:</strong> GET</p>
+                <p><strong>Example Response:</strong></p>
+                <pre>"creator": "Guru sensei",
+  "status": true,
+  "data": [
+    {
+      "title": "Sidhu Moose Wala - 295",
+      "duration": "4:30",
+      "popularity": "73%",
+      "preview": "https://p.scdn.co/mp3-preview/b3b5cfdc6f46d5c3d912dcdc936f9b3453ad4f9b?cid=adbbc3f9631e42d8b42103a72e447d94",
+      "url": "https://open.spotify.com/track/5W7DOVGQLTigu09afW7QMT"
+    },..]</pre>
+            </details>
+        </li>
+        <li>
+            <a href="/spotifydl">spotifydl</a>
+            <details>
+                <summary>Details</summary>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td>string</td>
+                        <td>The Spotify track url to download.</td>
+                    </tr>
+                </table>
+                <p><strong>Request Type:</strong> GET</p>
+                <p><strong>Example Response:</strong></p>
+                <pre> "creator": "Guru sensei",
+  "status": true,
+  "data": {
+    "thumbnail": "thumb url",
+    "title": "Sidhu Moose Wala - Levels",
+    "artist": {
+      "external_urls": {
+        "spotify": "track url"
+      },
+      "href": "https://api.spotify.com/v1/artists/4PULA4EFzYTrxYvOVlwpiQ",
+      "id": "4PULA4EFzYTrxYvOVlwpiQ",
+      "name": "Sidhu Moose Wala",
+      "type": "artist",
+      "uri": "spotify:artist:4PULA4EFzYTrxYvOVlwpiQ"
+    },
+    "duration": "3:49",
+    "preview": "preview url",
+    "url": "direct stream url"
+  }</pre>
+            </details>
+        </li>
+        <li>
+            <a href="/igs">igstory</a>
+            <details>
+                <summary>Details</summary>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td>string</td>
+                        <td>The url of the instagram story.</td>
+                    </tr>
+                </table>
+                <p><strong>Request Type:</strong> GET</p>
+                <p><strong>Example Response:</strong></p>
+                <pre>waited</pre>
+            </details>
+        </li>
+        <li>
+            <a href="/igdl">instadownloader</a>
+            <details>
+                <summary>Details</summary>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td>string</td>
+                        <td>The url of the instagram Reel or post.</td>
+                    </tr>
+                </table>
+                <p><strong>Request Type:</strong> GET</p>
+                <p><strong>Example Response:</strong></p>
+                <pre>waited</pre>
+            </details>
+        </li>
+        <li>
+            <a href="/xdown">X(Twitter) Downloader</a>
+            <details>
+                <summary>Details</summary>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td>string</td>
+                        <td>The url of the twitter/X video.</td>
+                    </tr>
+                </table>
+                <p><strong>Request Type:</strong> GET</p>
+                <p><strong>Example Response:</strong></p>
+                <pre>waited</pre>
+            </details>
+        </li>
+        <li>
+            <a href="/fbvideo">facebook dl</a>
+            <details>
+                <summary>Details</summary>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td>string</td>
+                        <td>The url of the facebook Reel/video.</td>
+                    </tr>
+                </table>
+                <p><strong>Request Type:</strong> GET</p>
+                <p><strong>Example Response:</strong></p>
+                <pre>waited</pre>
+            </details>
+        </li>
+        <li>
+            <a href="/apksearch">search apk</a>
+            <details>
+                <summary>Details</summary>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>query</td>
+                        <td>string</td>
+                        <td>The name of your apk.</td>
+                    </tr>
+                </table>
+                <p><strong>Request Type:</strong> GET</p>
+                <p><strong>Example Response:</strong></p>
+                <pre>waited</pre>
+            </details>
+        </li>
+        <li>
+            <a href="/playstore">search playstore</a>
+            <details>
+                <summary>Details</summary>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>query</td>
+                        <td>string</td>
+                        <td>The name of your app.</td>
+                    </tr>
+                </table>
+                <p><strong>Request Type:</strong> GET</p>
+                <p><strong>Example Response:</strong></p>
+                <pre>waited</pre>
+            </details>
+        </li>
     </ul>
 </body>
 </html>
