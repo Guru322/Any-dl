@@ -25,8 +25,15 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.json({ creator: "Guru sensei", status: true, msg: "Server is running" }, null, 2);
+    const visitorIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.ip;
+    res.json({ 
+        creator: "Guru sensei", 
+        status: true, 
+        msg: "Server is running", 
+        visitorIp: visitorIp 
+    });
 });
+
 
 app.use('/spotifysearch', spotifySearch);
 app.use('/spotifydl', spotifyDl);
