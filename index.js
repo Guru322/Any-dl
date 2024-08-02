@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
         creator: "Guru sensei", 
         status: true, 
         msg: "Server is running", 
-        visitorIp: visitorIp 
+        yourip: visitorIp 
     });
 });
 
