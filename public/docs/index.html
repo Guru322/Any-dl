@@ -6,27 +6,68 @@
     <title>API Endpoints</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
+            color: #e0e0e0;
+            background-color: #000;
+        }
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .welcome-section h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        .welcome-section p {
+            margin: 20px 0;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        .scroll-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .scroll-button:hover {
+            background-color: #e0e0e0;
+            color: #000;
+        }
+        .content {
             margin: 20px;
-            background-color: #f4f4f4;
         }
         h1 {
-            color: #333;
+            color: #fff;
         }
         ul {
             list-style-type: none;
             padding: 0;
         }
         li {
-            background: #fff;
+            background: #222;
             margin: 10px 0;
             padding: 10px;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         a {
             text-decoration: none;
-            color: #007bff;
+            color: #1e90ff;
         }
         a:hover {
             text-decoration: underline;
@@ -34,13 +75,14 @@
         details {
             margin-top: 10px;
             padding: 10px;
-            background-color: #f9f9f9;
+            background-color: #333;
             border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
         summary {
             cursor: pointer;
             font-weight: bold;
+            color: #fff;
         }
         table {
             width: 100%;
@@ -50,38 +92,46 @@
         th, td {
             padding: 8px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #444;
+            color: #e0e0e0;
         }
         pre {
-            background-color: #f0f0f0;
+            background-color: #222;
             padding: 10px;
             border-radius: 5px;
             white-space: pre-wrap;
+            color: #e0e0e0;
         }
     </style>
 </head>
 <body>
-    <h1>API Endpoints</h1>
-    <ul>
-        <li>
-            <a href="/spotifysearch">spotifysearch</a>
-            <details>
-                <summary>Details</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>query</td>
-                        <td>string</td>
-                        <td>The search term for Spotify.</td>
-                    </tr>
-                </table>
-                <p><strong>Request Type:</strong> GET</p>
-                <p><strong>Example Response:</strong></p>
-                <pre>"creator": "Guru sensei",
+    <div class="welcome-section">
+        <h1>Welcome to Guru API</h1>
+        <p>Scroll down to read the API endpoints.</p>
+        <button class="scroll-button" onclick="document.getElementById('endpoints').scrollIntoView({ behavior: 'smooth' });">Read Docs</button>
+    </div>
+    <div id="endpoints" class="content">
+        <h1>API Endpoints</h1>
+        <ul>
+            <li>
+                <a href="/spotifysearch">spotifysearch</a>
+                <details>
+                    <summary>Details</summary>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>query</td>
+                            <td>string</td>
+                            <td>The search term for Spotify.</td>
+                        </tr>
+                    </table>
+                    <p><strong>Request Type:</strong> GET</p>
+                    <p><strong>Example Response:</strong></p>
+                    <pre>"creator": "Guru sensei",
   "status": true,
   "data": [
     {
@@ -91,27 +141,27 @@
       "preview": "https://p.scdn.co/mp3-preview/b3b5cfdc6f46d5c3d912dcdc936f9b3453ad4f9b?cid=adbbc3f9631e42d8b42103a72e447d94",
       "url": "https://open.spotify.com/track/5W7DOVGQLTigu09afW7QMT"
     },..]</pre>
-            </details>
-        </li>
-        <li>
-            <a href="/spotifydl">spotifydl</a>
-            <details>
-                <summary>Details</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>url</td>
-                        <td>string</td>
-                        <td>The Spotify track url to download.</td>
-                    </tr>
-                </table>
-                <p><strong>Request Type:</strong> GET</p>
-                <p><strong>Example Response:</strong></p>
-                <pre> "creator": "Guru sensei",
+                </details>
+            </li>
+            <li>
+                <a href="/spotifydl">spotifydl</a>
+                <details>
+                    <summary>Details</summary>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>url</td>
+                            <td>string</td>
+                            <td>The Spotify track url to download.</td>
+                        </tr>
+                    </table>
+                    <p><strong>Request Type:</strong> GET</p>
+                    <p><strong>Example Response:</strong></p>
+                    <pre> "creator": "Guru sensei",
   "status": true,
   "data": {
     "thumbnail": "thumb url",
@@ -130,134 +180,136 @@
     "preview": "preview url",
     "url": "direct stream url"
   }</pre>
-            </details>
-        </li>
-        <li>
-            <a href="/igs">igstory</a>
-            <details>
-                <summary>Details</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>url</td>
-                        <td>string</td>
-                        <td>The url of the instagram story.</td>
-                    </tr>
-                </table>
-                <p><strong>Request Type:</strong> GET</p>
-                <p><strong>Example Response:</strong></p>
-                <pre>waited</pre>
-            </details>
-        </li>
-        <li>
-            <a href="/igdl">instadownloader</a>
-            <details>
-                <summary>Details</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>url</td>
-                        <td>string</td>
-                        <td>The url of the instagram Reel or post.</td>
-                    </tr>
-                </table>
-                <p><strong>Request Type:</strong> GET</p>
-                <p><strong>Example Response:</strong></p>
-                <pre>waited</pre>
-            </details>
-        </li>
-        <li>
-            <a href="/xdown">X(Twitter) Downloader</a>
-            <details>
-                <summary>Details</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>url</td>
-                        <td>string</td>
-                        <td>The url of the twitter/X video.</td>
-                    </tr>
-                </table>
-                <p><strong>Request Type:</strong> GET</p>
-                <p><strong>Example Response:</strong></p>
-                <pre>waited</pre>
-            </details>
-        </li>
-        <li>
-            <a href="/fbvideo">facebook dl</a>
-            <details>
-                <summary>Details</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>url</td>
-                        <td>string</td>
-                        <td>The url of the facebook Reel/video.</td>
-                    </tr>
-                </table>
-                <p><strong>Request Type:</strong> GET</p>
-                <p><strong>Example Response:</strong></p>
-                <pre>waited</pre>
-            </details>
-        </li>
-        <li>
-            <a href="/apksearch">search apk</a>
-            <details>
-                <summary>Details</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>query</td>
-                        <td>string</td>
-                        <td>The name of your apk.</td>
-                    </tr>
-                </table>
-                <p><strong>Request Type:</strong> GET</p>
-                <p><strong>Example Response:</strong></p>
-                <pre>waited</pre>
-            </details>
-        </li>
-        <li>
-            <a href="/playstore">search playstore</a>
-            <details>
-                <summary>Details</summary>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>query</td>
-                        <td>string</td>
-                        <td>The name of your app.</td>
-                    </tr>
-                </table>
-                <p><strong>Request Type:</strong> GET</p>
-                <p><strong>Example Response:</strong></p>
-                <pre>waited</pre>
-            </details>
-        </li>
-    </ul>
+                </details>
+            </li>
+            <li>
+                <a href="/igs">igstory</a>
+                <details>
+                    <summary>Details</summary>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>url</td>
+                            <td>string</td>
+                            <td>The url of the instagram story.</td>
+                        </tr>
+                    </table>
+                    <p><strong>Request Type:</strong> GET</p>
+                    <p><strong>Example Response:</strong></p>
+                    <pre>waited</pre>
+                </details>
+            </li>
+            <li>
+                <a href="/igdl">instadownloader</a>
+                <details>
+                    <summary>Details</summary>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>url</td>
+                            <td>string</td>
+                            <td>The url of the instagram Reel or post.</td>
+                        </tr>
+                    </table>
+                    <p><strong>Request Type:</strong> GET</p>
+                    <p><strong>Example Response:</strong></p>
+                    <pre>waited</pre>
+                </details>
+            </li>
+            <li>
+                <a href="/xdown">X(Twitter) Downloader</a>
+                <details>
+                    <summary>Details</summary>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>url</td>
+                            <td>string</td>
+                            <td>The url of the twitter/X video.</td>
+                        </tr>
+                    </table>
+                    <p><strong>Request Type:</strong> GET</p>
+                    <p><strong>Example Response:</strong></p>
+                    <pre>waited</pre>
+                </details>
+            </li>
+            <li>
+                <a href="/fbvideo">facebook dl</a>
+                <details>
+                    <summary>Details</summary>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>url</td>
+                            <td>string</td>
+                            <td>The url of the facebook Reel/video.</td>
+                        </tr>
+                    </table>
+                    <p><strong>Request Type:</strong> GET</p>
+                    <p><strong>Example Response:</strong></p>
+                    <pre>waited</pre>
+                </details>
+            </li>
+            <li>
+                <a href="/apksearch">search apk</a>
+                <details>
+                    <summary>Details</summary>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>query</td>
+                            <td>string</td>
+                            <td>The name of your apk.</td>
+                        </tr>
+                    </table>
+                    <p><strong>Request Type:</strong> GET</p>
+                    <p><strong>Example Response:</strong></p>
+                    <pre>waited</pre>
+                </details>
+            </li>
+            <li>
+                <a href="/playstore">search playstore</a>
+                <details>
+                    <summary>Details</summary>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>query</td>
+                            <td>string</td>
+                            <td>The name of your app.</td>
+                        </tr>
+                    </table>
+                    <p><strong>Request Type:</strong> GET</p>
+                    <p><strong>Example Response:</strong></p>
+                    <pre>waited</pre>
+                </details>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
+
