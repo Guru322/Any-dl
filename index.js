@@ -20,6 +20,7 @@ import ipsearch from './routes/ipsearch.js';
 import ytdll from './routes/ytdl.js';
 import quote from './routes/quotemaker.js';
 import ai from './routes/ai.js'
+import ttp from './routes/ttp.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -65,6 +66,7 @@ app.use('/ipsearch', ipsearch);
 app.use('/ytdl', ytdll);
 app.use('/qc', quote);
 app.use('/ai', ai);
+app.use('/ttp',ttp)
 
 
 app.listen(3000, () => {

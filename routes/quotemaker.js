@@ -48,8 +48,8 @@ router.post('/', async (req, res) => {
   try {
     const buffer = await Quotly(json);
     if (buffer) {
-      res.set('Content-Type', 'image/png');  
-      res.send(buffer);  
+      res.set('Content-Type', 'image/png');
+      res.send(buffer);
     } else {
       res.status(500).send('Failed to generate image.');
     }
