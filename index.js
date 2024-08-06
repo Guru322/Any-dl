@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
-    const visitorIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.ip;
+    const visitorIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.ip;
     res.json({ 
         creator: "Guru sensei", 
         status: true, 

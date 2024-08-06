@@ -4,8 +4,36 @@ import Quotly from '../func/tools/quotly.js';
 
 const router = express.Router();
 
+const validateRequestBody = (body) => {
+  return body && typeof body.senderId === 'string' && typeof body.senderName === 'string';
+};
+
 router.post('/', async (req, res) => {
-  const { mediaUrl, senderId, senderName, senderPhotoUrl, messageText, replyMessage } = req.body;
+  if (!validateRequestBody(req.body)) {
+    return res.status(400).send('Invalid request data.');
+  }
+
+  const { senderId, senderName, senderPhotoUrl, messageText, replyMessage } = req.body;
+
+  const messageObject = {
+    entities: [],
+    avatar: true,
+    from: {
+      id: senderId,
+      name: senderName,
+      photo: {
+        url: senderPhotoUrl
+      }
+    },
+    text: messageText,
+    replyMessage: replyMessage || undefined
+  };
+
+  if (replyMessage && replyMessage.photo && replyMessage.photo.url) {
+    messageObject.replyMessage.photo = {
+      url: `https://wsrv.nl/?url=${encodeURIComponent(replyMessage.photo.url)}&output=png`
+    };
+  }
 
   const json = {
     type: 'quote',
@@ -14,34 +42,19 @@ router.post('/', async (req, res) => {
     width: 512,
     height: 768,
     scale: 2,
-    messages: [_.omitBy({
-      entities: [],
-      avatar: true,
-      from: {
-        id: senderId,
-        name: senderName,
-        photo: {
-          url: senderPhotoUrl
-        }
-      },
-      text: messageText,
-      replyMessage: replyMessage || undefined,
-      media: {
-        url: `https://wsrv.nl/?url=${encodeURIComponent(mediaUrl)}&output=png`
-      }
-    }, _.isUndefined)]
+    messages: [_.omitBy(messageObject, _.isUndefined)]
   };
 
   try {
     const buffer = await Quotly(json);
     if (buffer) {
-      const base64Image = buffer.toString('base64');
-      res.json({ image: base64Image });
+      res.set('Content-Type', 'image/png');  
+      res.send(buffer);  
     } else {
       res.status(500).send('Failed to generate image.');
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Quotly Error:', error.message);
     res.status(500).send('Internal Server Error');
   }
 });
