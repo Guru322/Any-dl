@@ -1,13 +1,12 @@
-import express from "express";
-import { ttp } from "../func/tools/text.js";
+import express from 'express'
+import { ttp } from '../func/tools/text.js'
 
+const router = express.Router()
 
-const router = express.Router();
+router.get('/', async (req, res) => {
+  const { text, color } = req.query
+  const results = await ttp(text, color)
+  res.json({ creater: 'Guru Sensei', results })
+})
 
-router.get("/", async (req, res) => {
-    const { text, color } = req.query;
-    const results = await ttp(text, color);
-    res.json({creater: "Guru Sensei" , results});
-    });
-
-export default router;
+export default router
