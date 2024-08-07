@@ -233,7 +233,19 @@
             </table>
             <p><strong>Request Type:</strong> GET</p>
             <p><strong>Example Response:</strong></p>
-            <pre>waited</pre>
+            <pre>{
+              "creator": "Guru sensei",
+              "data": {
+                "creator": "Guru sensei",
+                "status": true,
+                "data": [
+                  {
+                    "type": "jpg",
+                    "url": "https://scontent-gmp1-1.cdninstagram.com/v/t51.29350-15/454084599_811661094129287_8030254698722727487_n.heic?stp=c0.420.1080.1080a_dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDE5MjAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=rv3sv6J1WSwQ7kNvgGi75RB&edm=ANmP7GQBAAAA&ccb=7-5&ig_cache_key=MzQyODgxNDExODU2Mjc2MzMyNw%3D%3D.2-ccb7-5&oh=00_AYD8CFRMH_WTWaYTWomw_fdnVmDO_2o1dW3rwqaN5OM4QQ&oe=66B97629&_nc_sid=982cc7"
+                  }
+                ]
+              }
+            }</pre>
           </details>
         </li>
         <li>
@@ -254,7 +266,22 @@
             </table>
             <p><strong>Request Type:</strong> GET</p>
             <p><strong>Example Response:</strong></p>
-            <pre>waited</pre>
+            <pre>{
+              "creator": "Guru sensei",
+              "found": true,
+              "media": [
+                {
+                  "url": "https://pbs.twimg.com/media/GTi5drzXUAA8H6Z.jpg",
+                  "type": "image"
+                }
+              ],
+              "date": "Sun Jul 28 03:47:01 +0000 2024",
+              "likes": 988926,
+              "replies": 16927,
+              "retweets": 116407,
+              "authorName": "Elon Musk",
+              "authorUsername": "elonmusk"
+            }</pre>
           </details>
         </li>
         <li>
@@ -275,7 +302,17 @@
             </table>
             <p><strong>Request Type:</strong> GET</p>
             <p><strong>Example Response:</strong></p>
-            <pre>waited</pre>
+            <pre>{
+              "result": {
+                "creator": "Guru sensei",
+                "url": "https://fb.watch/tB-FkeDszv/?",
+                "title": "video title",
+                "time": "",
+                "hd": "",
+                "sd": "",
+                "audio": ""
+              }
+            }</pre>
           </details>
         </li>
         <li>
@@ -296,7 +333,18 @@
             </table>
             <p><strong>Request Type:</strong> GET</p>
             <p><strong>Example Response:</strong></p>
-            <pre>waited</pre>
+            <pre>{
+              "creator": "Guru sensei",
+              "data": [
+                {
+                  "title": "WhatsApp Messenger 2.24.17.7 beta",
+                  "developer": "by WhatsApp LLC",
+                  "version": "2.24.17.7",
+                  "updated": "August 7, 2024 at 5:07PM UTC",
+                  "downloadCount": "29",
+                  "size": "57.64 MB",
+                  "url": "https://www.apkmirror.com/apk/whatsapp-inc/whatsapp/whatsapp-2-24-17-7-release/"
+                },....]}</pre>
           </details>
         </li>
         <li>
@@ -317,7 +365,227 @@
             </table>
             <p><strong>Request Type:</strong> GET</p>
             <p><strong>Example Response:</strong></p>
-            <pre>waited</pre>
+            <pre>[
+              {
+                "creator": "Guru sensei",
+                "link": "https://play.google.com/store/apps/details?id=com.whatsapp.w4b",
+                "name": "WhatsApp Business",
+                "developer": "WhatsApp LLC",
+                "img": "https://play-lh.googleusercontent.com/ebs6ftYUkOKlDY0M174OpvargwbDyHUVAnO_G5aE0dL5GBQKCtfh3adN5H3ZMThXogDi=s64",
+                "rating": "Rated 4.2 stars out of five stars",
+                "rating_Num": "4.2",
+                "link_dev": "https://play.google.com/store/apps/developer?id=WhatsApp+LLC"
+              },...]</pre>
+          </details>
+        </li>
+        <li>
+          <a href="/ytdl/ytsearch">search youtube</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>The name of your video.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>{
+              "creator": "Guru Sensei",
+              "results": [
+                {
+                  "type": "video",
+                  "title": "(14) He Awakens The Power Of Nine Tailed Monster Inside Him Explained in Hindi || Animity ||",
+                  "description": "(14) He Awakens The Power Of Nine Tailed Monster Inside Him Explained in Hindi Anime Name - Naruto Shippuden Naruto ...",
+                  "url": "https://youtube.com/watch?v=gdUNflpMMbk",
+                  "duration": "33:18",
+                  "views": 93834,
+                  "author": "Animity"
+                },...]}</pre>
+          </details>
+        </li>
+        <li>
+          <a href="/ytdl/ytmp3">download an audio from youtube</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The url the of the youtube video</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>{
+              "creator": "Guru sensei",
+              "title": "Love Nwantiti (Sush & Yohan Mashup) - Bollywood Revibe🦋✨",
+              "author": "Sush & Yohan Music",
+              "audio_url": "dl url",
+              "description": "desc"
+            }</pre>
+          </details>
+        </li>
+        <li>
+          <a href="/ytdl/ytmp4">download a video from youtube</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td>The url the of the youtube video</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>{
+              "creator": "Guru sensei",
+              "title": "Love Nwantiti (Sush & Yohan Mashup) - Bollywood Revibe🦋✨",
+              "author": "Sush & Yohan Music",
+              "video_url": "dl url",
+              "description": "desc"
+            }</pre>
+          </details>
+        </li>
+        <li>
+          <a href="/bingimg">create image with bing</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>the thing you want to create.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>{
+              "creator": "Guru sensei",
+              "status": true,
+              "results": [
+                "https://tse1.mm.bing.net/th/id/OIG2.ZgR3UsFDODIrh0I5Il7k",
+                "https://tse4.mm.bing.net/th/id/OIG2.JTnUuI0VTjod62wlS5Yl",
+                "https://tse1.mm.bing.net/th/id/OIG2.XUflL7BCD0NBV2ACxeHQ",
+                "https://tse2.mm.bing.net/th/id/OIG2.tlEQ8srCCfSOcIA679a5"
+              ]
+            }</pre>
+          </details>
+        </li>
+        <li>
+          <a href="/ai/gpt4">talk with gpt4</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>username</td>
+                <td>string</td>
+                <td>random string</td>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>your prompt.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>{
+              "creator": "Guru sensei",
+              "status": true,
+              "msg": "Your name is Guru."
+            }</pre>
+          </details>
+        </li>
+        <li>
+          <a href="/ai/bing">talk with Bing</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>username</td>
+                <td>string</td>
+                <td>random string</td>
+              </tr>
+              <tr>
+                <td>query</td>
+                <td>string</td>
+                <td>your prompt.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>{
+              "creator": "Guru sensei",
+              "status": true,
+              "msg": "Your name is Guru. 😊"
+            }</pre>
+          </details>
+        </li>
+        <li>
+          <a href="/ttp">text to picture</a>
+          <details>
+            <summary>Details</summary>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>text</td>
+                <td>string</td>
+                <td>your text</td>
+              </tr>
+              <tr>
+                <td>color</td>
+                <td>string</td>
+                <td>color of text.</td>
+              </tr>
+            </table>
+            <p><strong>Request Type:</strong> GET</p>
+            <p><strong>Example Response:</strong></p>
+            <pre>{
+              "creater": "Guru Sensei",
+              "results": [
+                {
+                  "url": "output.png",
+                  "title": "2024-08-07T14:30:04:548"
+                }
+              ]
+            }</pre>
           </details>
         </li>
       </ul>
