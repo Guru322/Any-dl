@@ -67,6 +67,6 @@ app.use('/ai', ai)
 app.use('/ttp', ttp)
 app.use('/bingimg', bingimg)
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000')
+app.listen(8080, () => {
+  console.log('Server is running on port 8080')
 })
