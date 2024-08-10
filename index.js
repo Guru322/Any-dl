@@ -22,6 +22,7 @@ import xdownl from './routes/xdown.js'
 import xnsearch from './routes/xnxx-search.js'
 import xnxxdl from './routes/xnxxdl.js'
 import ytdll from './routes/ytdl.js'
+import vadapav from './routes/vp.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -31,6 +32,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
+app.set('json spaces', 2)
 
 app.get('/', (req, res) => {
   const visitorIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.ip
@@ -66,6 +68,7 @@ app.use('/qc', quote)
 app.use('/ai', ai)
 app.use('/ttp', ttp)
 app.use('/bingimg', bingimg)
+app.use('/vadapav', vadapav)
 
 app.listen(8080, () => {
   console.log('Server is running on port 8080')

@@ -12,14 +12,12 @@ router.get('/', async (req, res) => {
     res.set('Content-Type', 'image/png')
     res.send(imageBuffer)
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        creator: 'Guru sensei',
-        status: false,
-        msg: 'Failed to process the image',
-        error: error.message,
-      })
+    res.status(500).json({
+      creator: 'Guru sensei',
+      status: false,
+      msg: 'Failed to process the image',
+      error: error.message,
+    })
   }
 })
 
