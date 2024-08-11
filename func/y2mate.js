@@ -7,6 +7,9 @@ class Ytdl2 {
     this.headers = {
       accept: "*/*",
       "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "Origin": "https://tomp3.cc",
+      "Connection": "keep-alive",
+      "Referer": "https://tomp3.cc/youtube-downloader/8uioXLxzy4w"
     };
   }
 
