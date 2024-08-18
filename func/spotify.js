@@ -11,8 +11,8 @@ class Spotify {
 
   async func1() {
     try {
-      const var2 = process.env.SPOTIFY_CLIENT_ID
-      const var3 = process.env.SPOTIFY_CLIENT_SECRET
+      const var2 = "adbbc3f9631e42d8b42103a72e447d94"
+      const var3 = "0d396473ffe94f259f0d716dcc83638c"
 
       if (!var2 || !var3) {
         throw new Error('Client ID or Client Secret is missing')
