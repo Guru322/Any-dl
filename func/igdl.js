@@ -14,7 +14,7 @@ const igdl = async url => {
       data: payload,
       headers: {
         'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        cookie: 'PHPSESSID=21n6i9q1g4s32b6u7jhci5og3c',
+        cookie: 'PHPSESSID=ihp48pmbr4cjgckula7qipjkko',
         'user-agent':
           'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36',
       },
