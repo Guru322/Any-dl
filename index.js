@@ -51,7 +51,7 @@ app.get('/docs', (req, res) => {
 app.use('/spotifysearch', spotifySearch)
 app.use('/spotifydl', spotifyDl)
 app.use('/igs', Igs)
-app.use('/igdl', igdown)
+app.use('/insta', igdown)
 app.use('/xdown', xdownl)
 app.use('/fbvideo', fvid)
 app.use('/apksearch', apksearch)
