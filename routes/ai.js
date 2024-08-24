@@ -2,6 +2,7 @@ import { bing, gpt4 } from '../func/ai.js'
 import blackbox from '../func/blackbox.js'
 import AIUncensored from '../func/darkgpt.js'
 import AiSearch from '../func/ai-search.js'
+import morphic from '../func/morph.js'
 
 import express from 'express'
 
@@ -47,6 +48,13 @@ router.get('/search', async (req, res) => {
   let query = req.query.query
   if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'query is required' })
   const result = await aisearch.ask(query)
+  res.json({ creator: 'Guru sensei', status: true, msg: result })
+})
+
+router.get('/morphic', async (req, res) => {
+  let query = req.query.query
+  if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'query is required' })
+  const result = await morphic(query)
   res.json({ creator: 'Guru sensei', status: true, msg: result })
 })
 
