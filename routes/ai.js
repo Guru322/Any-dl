@@ -1,11 +1,13 @@
 import { bing, gpt4 } from '../func/ai.js'
 import blackbox from '../func/blackbox.js'
 import AIUncensored from '../func/darkgpt.js'
+import AiSearch from '../func/ai-search.js'
 
 import express from 'express'
 
 const router = express.Router()
 let darky = new AIUncensored()
+let aisearch = new AiSearch()
 
 router.get('/bing', async (req, res) => {
   let username = req.query.username
@@ -38,6 +40,13 @@ router.get('/darkgpt', async (req, res) => {
   let query = req.query.query
   if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'query is required' })
   const result = await darky.Chat(query)
+  res.json({ creator: 'Guru sensei', status: true, msg: result })
+})
+
+router.get('/search', async (req, res) => {
+  let query = req.query.query
+  if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'query is required' })
+  const result = await aisearch.ask(query)
   res.json({ creator: 'Guru sensei', status: true, msg: result })
 })
 
