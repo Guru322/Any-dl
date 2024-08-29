@@ -3,6 +3,8 @@ import blackbox from '../func/blackbox.js'
 import AIUncensored from '../func/darkgpt.js'
 import AiSearch from '../func/ai-search.js'
 import morphic from '../func/morph.js'
+import fetch from 'node-fetch';
+import imagine from '../func/imagine.js';
 
 import express from 'express'
 
@@ -57,5 +59,25 @@ router.get('/morphic', async (req, res) => {
   const result = await morphic(query)
   res.json({ creator: 'Guru sensei', status: true, msg: result })
 })
+
+router.get('/imagine', async (req, res) => {
+  let query = req.query.query;
+  if (!query) return res.json({ creator: 'Guru sensei', status: false, msg: 'query is required' });
+
+  try {
+      let imageUrl = imagine(query);
+
+      let response = await fetch(imageUrl);
+
+      if (!response.ok) {
+          throw new Error(`Failed to fetch image: ${response.statusText}`);
+      }
+      res.setHeader('Content-Type', response.headers.get('Content-Type'));
+      response.body.pipe(res);
+  } catch (error) {
+      console.error(`Error fetching image: ${error.message}`); // Log any errors
+      res.status(500).json({ creator: 'Guru sensei', status: false, msg: error.message });
+  }
+});
 
 export default router
