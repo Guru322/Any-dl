@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 import * as cheerio from 'cheerio'
 import querystring from 'querystring'
+import fileType from 'file-type'
 
 async function igdl2(instaUrl) {
   const url = 'https://indownloader.app/request'
@@ -34,7 +35,6 @@ async function igdl2(instaUrl) {
     }
 
     const $ = cheerio.load(data.html)
-
     const thumbnail = $('.post-thumb img').attr('src')
 
     const downloadLinks = []
@@ -45,13 +45,34 @@ async function igdl2(instaUrl) {
       })
     })
 
+    const fileTypeInfo = await detectFileType(downloadLinks[0].url)
+
     return {
       creator: 'Guru sensei',
       thumbnail,
       downloadLinks,
+      type: fileTypeInfo.type,
     }
   } catch (error) {
     console.error('Error:', error)
+    throw error
+  }
+}
+
+async function detectFileType(fileUrl) {
+  try {
+    const response = await fetch(fileUrl)
+    const buffer = await response.buffer()
+
+    const fileTypeResult = await fileType.fromBuffer(buffer)
+
+    if (fileTypeResult) {
+      return { type: fileTypeResult.mime }
+    } else {
+      return { type: 'Unknown' }
+    }
+  } catch (error) {
+    console.error('Error detecting file type:', error)
     throw error
   }
 }
