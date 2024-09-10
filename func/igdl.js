@@ -1,42 +1,48 @@
-import axios from 'axios'
-import cheerio from 'cheerio'
+import axios from "axios";
 
-const igdl = async url => {
-  const payload = new URLSearchParams({
-    url: url,
-    host: 'instagram',
-  })
+/*
+  Created by https://github.com/ztrdiamond !
+  Source: https://whatsapp.com/channel/0029VagFeoY9cDDa9ulpwM0T
+  "Aku janji jika hapus watermark ini maka aku rela miskin hingga 7 turunan"
+*/
 
+async function igdl(url) {
   try {
-    const response = await axios.request({
-      method: 'POST',
-      baseURL: 'https://saveinsta.io/core/ajax.php',
-      data: payload,
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        cookie: 'PHPSESSID=ihp48pmbr4cjgckula7qipjkko',
-        'user-agent':
-          'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36',
-      },
+    return await new Promise(async(resolve, reject) => {
+      if(!/^https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/[a-zA-Z0-9_-]+\/?.*/.test(url)) reject("invalid url input!");
+      const headers = { headers: { contentType: "application/json", origin: "https://publer.io", referer: "https://publer.io/" }};
+      axios.post("https://app.publer.io/hooks/media", {
+        iphone: false,
+        url
+      }, headers).then(async res => {
+        const task_id = res.data.job_id;
+        const task = async() => (await axios.get("https://app.publer.io/api/v1/job_status/" + task_id, headers)).data;
+        async function process() {
+          const { status, payload } = await task()
+          if(status === "complete") {
+            if(payload[0].error) return reject(payload[0].error)
+            const media = payload.map(d => ({
+              type: d.type,
+              url: d.path,
+              thumb: d.thumbnail
+            }))
+            return resolve({
+              success: true,
+              media
+            })
+          }
+          setTimeout(process, 1000);
+        }
+        await process()
+      }).catch(e => reject(e))
     })
-
-    const $ = cheerio.load(response.data)
-    const mediaURL = $('div.row > div.col-md-12 > div.row.story-container.mt-4.pb-4.border-bottom')
-      .map((_, el) => 'https://saveinsta.io/' + $(el).find('div.col-md-8.mx-auto > a').attr('href'))
-      .get()
-
+  } catch (e) {
     return {
-      creator: 'Guru sensei',
-      status: 200,
-      media: mediaURL,
-    }
-  } catch (error) {
-    console.error(error)
-    return {
-      status: 400,
-      message: 'error',
+      success: false,
+      errors: [e]
     }
   }
 }
 
-export default igdl
+export default igdl;
+
